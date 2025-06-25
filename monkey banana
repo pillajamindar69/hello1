@@ -1,7 +1,6 @@
 from itertools import permutations
 
-# Distance matrix between cities (symmetric)
-# Example: 4 cities
+
 graph = [
     [0, 10, 15, 20],
     [10, 0, 35, 25],
@@ -9,37 +8,36 @@ graph = [
     [20, 25, 30, 0]
 ]
 
-# Number of cities
+
 n = len(graph)
 
-# Starting city (0 in this case)
 start = 0
 
-# All cities except the starting city
+
 cities = list(range(n))
 cities.remove(start)
 
-# Initialize minimum path cost to a large number
+
 min_path_cost = float('inf')
 best_path = []
 
-# Try all permutations of the remaining cities
+
 for perm in permutations(cities):
     current_cost = 0
     k = start
 
-    # Calculate cost from start -> city1 -> city2 -> ... -> last_city
+    
     for j in perm:
         current_cost += graph[k][j]
         k = j
-    # Add cost to return to start
+    
     current_cost += graph[k][start]
 
-    # Update minimum
+    
     if current_cost < min_path_cost:
         min_path_cost = current_cost
         best_path = [start] + list(perm) + [start]
 
-# Print result
+
 print("Minimum cost:", min_path_cost)
 print("Path:", best_path)
