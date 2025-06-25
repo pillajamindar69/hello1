@@ -9,6 +9,6 @@ def tower_of_hanoi(num, source, aux, target):
     # Move the num-1 disks from auxiliary to target
     tower_of_hanoi(num - 1, aux, source, target)
 
-# Example usage
+
 num_disks = 3
 tower_of_hanoi(num_disks, "A", "B", "C")
